@@ -1,0 +1,46 @@
+# Arquivo de template de Mapa para uso com o plotMap
+# Comentários devem ser precedidos com '#', como esta linha
+
+# **** Modelo ONS para precipitação prevista ****
+
+# **** Parâmetros do Mapa ****
+
+
+# **** Parâmetros da Barra de Cores ****
+# Orientação da barra de cores. 
+# Utilizar:
+#           'horizontal' - barra de cores na horizontal
+#           'vertical' - barra de cores na vertical
+barra_cores_orientacao:horizontal
+
+# posicao
+posicao:bottom
+
+# Determina se a barra de cores terá setas apontando para os extremos
+# Utilizar:
+#          'neither' para nenhuma seta 
+#          'both' para setas à esquerda e à direira
+#          'min' para seta à esquerda 
+#          'max' para seta à direira
+barra_cores_extensao:both
+
+# cor_extremo_inferior
+barra_cores_cor_extremo_inferior:red
+
+# cor_extremo_superior
+barra_cores_cor_extremo_superior:blue
+
+# Códigos das cores 
+barra_cores_codigos:#ffffff,#e1ffff,#b4f0fa,#97d2fa,#2882f0,#1465d1,#66fe85,#19d606,#1eb41d,#ffe878,#ffc13c,#ff6100,#e11400,#fa5e6b,#a9a9a9
+
+# valores_escala
+barra_cores_valores:0,5,10,15,20,25,30,40,50,75,100,150,200
+
+# strings_escala
+barra_cores_strings:0,5,10,15,20,25,30,40,50,75,100,150,200
+
+# cores_escala
+barra_cores_cores_escala:[]
+
+# titulo_escala
+barra_cores_titulo:
