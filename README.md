@@ -1,4 +1,4 @@
-<img src="plotMap/Teste1.jpg" width="400">
+<img src="Teste1.jpg" width="400">
 
 
 # plotMap
