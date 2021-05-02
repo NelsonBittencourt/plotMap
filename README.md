@@ -6,7 +6,7 @@ O código é livre (licença MIT) e conto com a colaboração de todos para o se
 
 ## Utilização:
 
-Em breve. Mas o arquivo 'exemplo.py'(exemplo.py) já lhe dará uma boa noção de como utilizar o código.
+Em breve. Mas o arquivo 'exemplo.py' já lhe dará uma boa noção de como utilizar o código.
 
 ## Dependências:
 
