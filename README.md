@@ -13,7 +13,7 @@ O código é livre (licença MIT) e conto com a colaboração de todos para o se
 
 ## Licença
 
-[Ver licença](licence)
+[Ver licença](LICENSE)
 
 ## Sobre o autor
 
