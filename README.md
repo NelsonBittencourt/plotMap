@@ -1,22 +1,25 @@
-<img src="Teste1.jpg" width="400">
-
-
 # plotMap
-O projeto 'plotMap' tem por objetivo fornecer uma forma simples de plotar mapas, principalmente para o setor elétrico brasileiro.
+O projeto 'plotMap' tem por objetivo fornecer uma forma simples de plotar mapas.
 O código é livre (licença MIT) e conto com a colaboração de todos para o seu aperfeiçoamento.
 
+<img src="Teste1.jpg" width="200">
 
+## Utilização:
 
-## Utilização
+Em breve. Mas o arquivo 'exemplo.py' já lhe dará uma boa noção de como utilizar o código.
 
-## Dependências
+## Dependências:
 
-## Licença
+Matplotlib e Cartopy.
+
+## Licença:
 
 [Ver licença](LICENSE)
 
-## Sobre o autor
 
-Página: [teste](www.nrbenergia.somee.com)
+## Sobre o autor:
 
-### Teste 3
+[Meu LinkedIn](www.linkedin.com/in/nelsonrossibittencourt)
+[Minha página de projetos](www.nrbenergia.somee.com)
+
+
