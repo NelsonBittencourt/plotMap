@@ -1,0 +1,51 @@
+# Arquivo de template de Mapa para uso com o módulo 'plotMap'.
+# Comentários devem ser precedidos com '#', como esta linha.
+
+# Modelo    : Baseado no modelo ONS para precipitação prevista ****
+# Criado por: Nelson Rossi Bittencourt
+# Versão    : 0.1 
+
+# TODO: Implementar parâmetros do grid e novos parâmetros do mapa.
+
+# **** Parâmetros do Mapa ****
+# Define a área visível do Mapa.
+# Devem ser fornecidos, na ordem: longitude Oeste, longitude Leste, latitude Sul e latitude Norte.
+mapa_coordenadas:-75,-35,-35,5
+
+
+# **** Parâmetros da Barra de Cores ****
+# Orientação da barra de cores. 
+# Utilizar:
+#           'horizontal' - barra de cores na horizontal
+#           'vertical' - barra de cores na vertical
+#           'none' - para não exibir barra de cores
+barra_cores_orientacao:horizontal
+
+# Posição da barra de cores em relação ao Mapa
+# Utilizar: 
+#           'bottom' -  Abaixo. Válido para 'barra_cores_orientacao=horizontal'.
+#           'top'    -  Acima. Válido para 'barra_cores_orientacao=horizontal'.
+#           'left'   -  Esquerda. Válido para 'barra_cores_orientacao=vertical'.
+#           'righ'   -  Direira. Válido para 'barra_cores_orientacao=vertical'.
+barra_cores_posicao:bottom
+
+# Valores da escala de cores
+# Devem ser fornecidos os intervalos para valores para a barra de cores
+# O número de valores fornecidos deve ser igual ao número de cores em 'barra_cores_codigos'
+barra_cores_valores:0,5,10,15,20,25,30,40,50,75,100,150,200
+
+# Código de cores utilizado
+# Utilizar o código hexadecimal das cores
+# As cores abaixo foram obtidas de um arquivo semelhante ao utilizado pelo ONS, utilizando o edito de  imagens 'Paint.net'.
+# Devem ser inseridas as cores para cada intervalo de 'barra_cores_valores'
+barra_cores_codigos:#e1ffff,#b4f0fa,#97d2fa,#2882f0,#1465d1,#66fe85,#19d606,#1eb41d,#ffe878,#ffc13c,#ff6100,#e11400,#fa5e6b
+
+# Determina se a barra de cores terá setas apontando para os extremos
+# Deixar em branco para excluir uma ou ambas as setas indicadoras de extremos.
+# Para desativar uma ou ambas as setas, usar valor -1
+barra_cores_corMinimo:#ffffff 
+barra_cores_corMaximo:#a9a9a9
+
+# Título da barra de cores.
+# Pode ser deixado em branco.
+barra_cores_titulo:
