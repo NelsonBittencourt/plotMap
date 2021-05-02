@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import plotMap
 import numpy as np
 import struct
