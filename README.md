@@ -19,8 +19,8 @@ Matplotlib e Cartopy.
 
 ## Sobre o autor:
 
-[Meu LinkedIn](www.linkedin.com/in/nelsonrossibittencourt)
+[Meu LinkedIn](http://www.linkedin.com/in/nelsonrossibittencourt)
 
-[Minha página de projetos](www.nrbenergia.somee.com)
+[Minha página de projetos](http://www.nrbenergia.somee.com)
 
 
