@@ -11,7 +11,9 @@ O código é livre (licença MIT) e conto com a colaboração de todos para o se
 
 ## Dependências
 
-## MIT
+## Licença
+
+[Ver licença](licence)
 
 ## Sobre o autor
 
