@@ -1,4 +1,4 @@
-<img src="Ghidra/Features/Base/src/main/resources/images/GHIDRA_3.png" width="400">
+<img src="NelsonBittencourt/plotMap/Teste1.jpg" width="400">
 
 
 # plotMap
