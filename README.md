@@ -20,6 +20,7 @@ Matplotlib e Cartopy.
 ## Sobre o autor:
 
 [Meu LinkedIn](www.linkedin.com/in/nelsonrossibittencourt)
+
 [Minha página de projetos](www.nrbenergia.somee.com)
 
 
