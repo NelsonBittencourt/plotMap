@@ -1,0 +1,42 @@
+Log de Inserção de novos arquivos
+---------------------------------
+
+Em (05/05/2021):
+    - Inserido este arquivo de log;
+    - Inserido o arquivo 'templates/AnomaliaWxmaps.dat' com configurações para mapa de anomalias do site WXMaps.
+
+
+Log de Alterações da Rotina 'plotMap'
+------------------------------------
+
+Versão 0.11 (05/05/2021):
+
+- Adicionada a classe 'shapeFile';
+
+- Função 'plotarMapa':
+    O parâmetro 'shapeFile' é agora opcional;
+    Atualização da sintaxe dos métodos do 'matplotlib' para a versão 3.4;
+    Simplificação na rotina no ajuste do mapa de cores;
+    Ajustes na rotina de barra de cores.
+
+- Função 'loadMapTemplate':
+    Adicionado tratamento de erros na leitura do arquivo;
+    Adicionado tratamento de erros na alocação de variáveis no objeto 'Mapa'.
+
+
+
+Log de Alterações do arquivo de exemplos ('exemplos.py'):
+---------------------------------------------------------
+
+Versão 0.11 (05/05/2021):
+
+- Simplificação na leitura do arquivo binário de exemplo;
+- Inserção do exemplo 4, que utiliza o modelo 'AnomaliaWxmaps.dat';
+- Utilização do objeto 'ArquivoShape' para evitar leituras desnecessárias (e lentas) do arquivo '.shp' dos três primeiros exemplos.
+
+
+
+
+
+
+
