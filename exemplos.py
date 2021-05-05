@@ -8,7 +8,7 @@ exemplos.py - Rotina para testar o módulo 'plotMap'
               um mapa com modelo semelhante ao utilizado pelo ONS.
 
 Autor   : Nelson Rossi Bittencourt
-Versão  : 0.1
+Versão  : 0.11
 Licença : MIT
 Dependências: numpy, struct, plotMap
 ******************************************************************************
@@ -22,20 +22,22 @@ def main():
 
     # Lista para acomodar os dadoss de chuva a serem lidos do arquivo tipo 'Grads'.
     chuva = []
-
+  
     # Abre o arquivo 'ETA_24_000.bin' e aloca seus dados na lista 'chuva'.
-    arquivo_dados = open('ETA_24_000.bin','rb')
+    arquivo_dados = 'ETA_24_000.bin'
     
+    # Lê o arquivo de dados binário tipo 'Grads'    
     try:
-        byte1 = arquivo_dados.read(4)                           # lê 4 bytes de dados.
-        chuva.append(struct.unpack('f', byte1))                 # Converte para float.
-        while byte1 != b"":                                     # Repete o processo até o fim do arquivo.
-            byte1 = arquivo_dados.read(4)
-            if len(byte1)==4:                                   # Verifica se o dado lido é mesmo um byte.
-                    chuva.append(struct.unpack('f', byte1))        
-        arquivo_dados.close()
-    finally:
-        arquivo_dados.close()                                   # Fecha o arquivo em caso de erro.
+        with open(arquivo_dados, 'rb') as f:
+            while True:
+                byte = f.read(4)
+                if not byte:
+                    break                
+                chuva.append(struct.unpack('f',byte))                   
+    except:
+        print('Erro ao tentar abrir/acessar arquivo: {}'.format('ETA_24_000.bin'))
+        raise SystemExit
+  
 
     # listas com as coordenads (longitudes e latitudes) do arquivo 'Grads'.
     # Estes valores poderiam ser lidos do arquivo de configuração. Por simplicidade, foram inseridos no código.
@@ -45,7 +47,7 @@ def main():
 
     # Transforma a lista 'chuva' em uma matriz e altera o seu 'formato' para compatibilidade com a o número de longitutes 
     # e latitudes. Veja o método 'reshape' do 'numpy' para maiores detalhes.
-    chuva = np.array(chuva)
+    chuva = np.array(chuva,dtype=float)    
     chuva = np.reshape(chuva,(157,-1))
 
     # Nome de shape para obter os estados brasileiros.
@@ -58,13 +60,28 @@ def main():
     # Título do mapa
     titulo_mapa = 'Precipitação (mm)\nTeste'
 
+
+    # Na versão 0.11 foi introduzida a classe 'ArquivoShape', para permitir que o 'shapeFile' seja reaproveitado
+    # com mínimo overhead. Você ainda pode utilizar como argumento da função 'plotarMapa' uma string,
+    meuArquivoShape = plotMap.ArquivoShape(shapeFile)
+    
     # Exemplo 1: Usando o modelo de mapa de forma integral.
     #            Neste caso:
     #                        1) o mapa utilizará todos os parâmetros do arquivo especificado em 'mapTemplate';
     #                        2) O quinto argumento do método 'plotarMapa' corresponde ao nome do arquivo contendo 
     #                        os parâmetros do modelo de mapa.               
 
-    plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,shapeFile,mapTemplate, 'Teste1.jpg')
+    # plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,mapTemplate, 'exemplo1_mapaTipoONS.jpg',meuArquivoShape)
+
+    # Se preferir, pode utilizar a versão com parâmetros nomeados da função
+    plotMap.plotarMapa(
+                        titulo=titulo_mapa,
+                        lons=lons,
+                        lats=lats, 
+                        dados=chuva,
+                        modeloMapa=mapTemplate,                       
+                        destino='exemplo1_mapaTipoONS.jpg',
+                        shapeFile=meuArquivoShape)
 
 
     # Exemplo 2: Usando o modelo de mapa de forma parcial.
@@ -74,7 +91,7 @@ def main():
     #                           2) O quinto argumento do método 'plotarMapa' corresponde ao objeto 'Mapa' que
     #                           teve seus parâmetros alterados.
 
-    # O método 'loadMapTemplate' recebe o nome do arquivo de modelo do mapa e retorna um objeto 'Mapa'.
+    # O método 'loadMapTemplate' recebe o nome do arquivo de modelo do mapa e retorna um objeto 'Mapa'.    
     meuMapaCustomizado = plotMap.loadMapTemplate(mapTemplate)
 
     # Com o objeto 'Mapa', podemos alterar quaisquer dos parâmetros do objeto.
@@ -82,13 +99,30 @@ def main():
     meuMapaCustomizado.barraCores_orientacao = 'vertical'
     meuMapaCustomizado.barraCores_posicao = 'left' 
 
-    plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,shapeFile,meuMapaCustomizado, 'Teste2.jpg')
+    plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,meuMapaCustomizado, 'exemplo2_MapaCustomizado.jpg',meuArquivoShape)
 
 
     # Exemplo 3: Repetindo o exemplo 2, com mapa na tela.
     #            Para isso, basta não informar nada como 'destino' (sexto argumento) do método 'plotarMapa'.
+    #            Na versão 0.11 foi introduzida a classe 'ArquivoShape', para permitir que o 'shapeFile' seja reaproveitado
+    #            com mínimo overhead.
+    #            Importante: como o parâmetro 'destino' não foi definido, é mandatório nomear o parâmetro posterior a ele na
+    #            lista de argumentos (neste caso 'shapeFile').
 
-    plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,shapeFile,meuMapaCustomizado)
+    plotMap.plotarMapa(titulo_mapa, lons,lats,chuva,meuMapaCustomizado, shapeFile=meuArquivoShape)
+
+
+    # Exemplo 4: Repetindo o exemplo 2, com mapa do tipo 'anomalias' do site WXMaps
+    # O template foi introduzido na versão 0.11
+    # Neste exemplo, não será utilizado 'shapefile'
+    plotMap.plotarMapa(
+                        titulo='Anomalia (mm)\nWXMaps',
+                        lons=lons,
+                        lats=lats,
+                        dados=chuva,
+                        modeloMapa='templates/AnomaliaWxmaps.dat',
+                        destino='exemplo4_MapaTipoWXMaps_Anomalia1.jpg'
+                       )    
 
 
 if __name__ == '__main__':
