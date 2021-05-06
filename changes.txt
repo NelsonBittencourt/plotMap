@@ -9,6 +9,11 @@ Em (05/05/2021):
 Log de Alterações da Rotina 'plotMap'
 ------------------------------------
 
+Versão 0.12 (05/05/2021):
+
+- Função 'plotarMapa':
+    Correção de bug no método 'contourf'. Obrigatório declarar o número de níveis.
+
 Versão 0.11 (05/05/2021):
 
 - Adicionada a classe 'shapeFile';
