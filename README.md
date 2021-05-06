@@ -2,8 +2,7 @@
 O projeto 'plotMap' tem por objetivo fornecer uma forma simples de plotar mapas.
 O código é livre (licença MIT) e conto com a colaboração de todos para o seu aperfeiçoamento.
 
-<img src="mapa_home.png" width="200">
-<img src="mapa_home_2.png" width="200">
+<img src="mapa_home.png" width="200"> <img src="mapa_home_2.png" width="200">
 
 ## Utilização:
 
