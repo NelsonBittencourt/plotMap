@@ -5,7 +5,7 @@
 plotMap.py - Módulo para auxiliar na plotagem de mapas com dados
 
 Autor   : Nelson Rossi Bittencourt
-Versão  : 0.11
+Versão  : 0.12
 Licença : MIT
 Dependências: matplotlib e cartopy
 ******************************************************************************
@@ -148,7 +148,7 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
     norm = mpl.colors.BoundaryNorm(myMap.barraCores_valores, cmap.N)
 
     # Cria o gráfico do tipo contornos preenchidos.   
-    ax.contourf(lons, lats, dados, cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
+    ax.contourf(lons, lats, dados, levels=myMap.barraCores_valores,cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
 
     # Ajusta a barra de cores, se houver.    
     if myMap.barraCores_orientacao!="none":       
@@ -163,7 +163,8 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
                     location=myMap.barraCores_posicao,
                     extend=extend,
                     extendfrac='auto',                   
-                    ticks=myMap.barraCores_valores)
+                    #ticks=myMap.barraCores_valores
+                    )
 
         cbar.set_ticks(myMap.barraCores_valores)        
     
