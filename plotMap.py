@@ -5,7 +5,7 @@
 plotMap.py - Módulo para auxiliar na plotagem de mapas com dados
 
 Autor   : Nelson Rossi Bittencourt
-Versão  : 0.12
+Versão  : 0.13
 Licença : MIT
 Dependências: matplotlib e cartopy
 ******************************************************************************
@@ -33,8 +33,8 @@ class Mapa:
     
     """
     def __init__(self):
-        self.mapa_nome = ''
-        self.mapa_tipo = '' 
+        #self.mapa_nome = ''
+        #self.mapa_tipo = '' 
         self.mapa_coordenadas = []       
         self.barraCores_titulo = ''        
         self.barraCores_orientacao = ''  
@@ -43,6 +43,8 @@ class Mapa:
         self.barraCores_posicao = ''
         self.barraCores_corMinimo = ''
         self.barraCores_corMaximo = ''
+        self.barraCores_dist=0
+        self.barraCores_tam=0
 
 
 class ArquivoShape:
@@ -148,29 +150,27 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
     norm = mpl.colors.BoundaryNorm(myMap.barraCores_valores, cmap.N)
 
     # Cria o gráfico do tipo contornos preenchidos.   
-    ax.contourf(lons, lats, dados, levels=myMap.barraCores_valores,cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
+    filled = ax.contourf(lons, lats, dados, levels=myMap.barraCores_valores,cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
 
     # Ajusta a barra de cores, se houver.    
     if myMap.barraCores_orientacao!="none":       
 
         cbar = fig.colorbar(
-                    mpl.cm.ScalarMappable(norm=norm, cmap=cmap),
+                    filled,
                     orientation= myMap.barraCores_orientacao,
                     label= myMap.barraCores_titulo,
                     spacing = 'uniform',
-                    pad = 0.10,
-                    fraction = 0.05,
-                    location=myMap.barraCores_posicao,
-                    extend=extend,
-                    extendfrac='auto',                   
-                    #ticks=myMap.barraCores_valores
+                    pad=myMap.barraCores_dist,
+                    fraction=myMap.barraCores_tam,                      
+                    location=myMap.barraCores_posicao,                    
+                    extendfrac='auto',                                       
                     )
 
         cbar.set_ticks(myMap.barraCores_valores)        
     
     # Define título do gráfico.
     plt.title(titulo)
-
+  
     # Adiciona grid.         
     g1=ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,linewidth=1, color='gray', alpha=0.5, linestyle='--')
     g1.top_labels = False
@@ -206,7 +206,7 @@ def loadMapTemplate(arquivoTemplateMapa):
     lines = []
 
     # Número de linhas válidas esperado.
-    check_valid_lines = 8
+    check_valid_lines = 10
 
     # Contador de linhas válidas.
     valid_lines = 0
@@ -237,10 +237,9 @@ def loadMapTemplate(arquivoTemplateMapa):
                         map_dict[listValues[0]]= listValues[1]                    
                     else:
                         raise NameError("Linha inválida no arquivo de template '{}'. Verique a linha {}.".format(arquivoTemplateMapa, num_line))
-                        SystemExit
+                        
     except:
-        raise NameError(
-            "Erro ao tentar abrir o arquivo de template para o mapa [{}]!\nVerifique o caminho completo do arquivo e tente novamente.".format(arquivoTemplateMapa))        
+        raise NameError("Erro ao tentar abrir o arquivo de template para o mapa [{}]!\nVerifique o caminho completo do arquivo e tente novamente.".format(arquivoTemplateMapa))        
    
 
     # Verifica se o arquivo contem o número de linhas válidas.
@@ -260,7 +259,10 @@ def loadMapTemplate(arquivoTemplateMapa):
         local_map.barraCores_corMaximo = map_dict['barra_cores_corMaximo']
 
         local_map.barraCores_posicao = map_dict['barra_cores_posicao']
-        local_map.barraCores_codigos = map_dict['barra_cores_codigos'].split(',')    
+        local_map.barraCores_codigos = map_dict['barra_cores_codigos'].split(',')   
+
+        local_map.barraCores_dist = float(map_dict['barra_cores_dist'])
+        local_map.barraCores_tam = float(map_dict['barra_cores_tam'])         
 
         tmp = map_dict['barra_cores_valores'].split(',')    
         local_map.barraCores_valores = [float(i) for i in tmp]    
