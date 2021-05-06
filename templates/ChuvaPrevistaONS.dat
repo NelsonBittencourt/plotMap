@@ -3,7 +3,7 @@
 
 # Modelo    : Baseado no modelo ONS para precipitação prevista ****
 # Criado por: Nelson Rossi Bittencourt
-# Versão    : 0.1 
+# Versão    : 0.11 
 
 # TODO: Implementar parâmetros do grid e novos parâmetros do mapa.
 
@@ -32,7 +32,7 @@ barra_cores_posicao:bottom
 # Valores da escala de cores
 # Devem ser fornecidos os intervalos para valores para a barra de cores
 # O número de valores fornecidos deve ser igual ao número de cores em 'barra_cores_codigos'
-barra_cores_valores:0,5,10,15,20,25,30,40,50,75,100,150,200
+barra_cores_valores:0,1,5,10,15,20,25,30,40,50,75,100,150,200
 
 # Código de cores utilizado
 # Utilizar o código hexadecimal das cores
@@ -45,6 +45,13 @@ barra_cores_codigos:#e1ffff,#b4f0fa,#97d2fa,#2882f0,#1465d1,#66fe85,#19d606,#1eb
 # Para desativar uma ou ambas as setas, usar valor -1
 barra_cores_corMinimo:#ffffff 
 barra_cores_corMaximo:#a9a9a9
+
+# Ajustes finais da barra de cores
+# Distância entre a barra e o restante da figura, em percentual do eixo original
+barra_cores_dist:0.1
+
+# Percentual do tamanho do eixo para utilizar na barra de cores
+barra_cores_tam:0.05
 
 # Título da barra de cores.
 # Pode ser deixado em branco.

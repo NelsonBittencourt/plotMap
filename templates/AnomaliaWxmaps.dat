@@ -3,14 +3,14 @@
 
 # Modelo    : Baseado no modelo do site http://wxmaps.org/pix/prec8 para anomalia de precipitação prevista ****
 # Criado por: Nelson Rossi Bittencourt
-# Versão    : 0.1 
+# Versão    : 0.11
 
 # TODO: Implementar parâmetros do grid e novos parâmetros do mapa.
 
 # **** Parâmetros do Mapa ****
 # Define a área visível do Mapa.
 # Devem ser fornecidos, na ordem: longitude Oeste, longitude Leste, latitude Sul e latitude Norte.
-mapa_coordenadas:-75,-35,-35,5
+mapa_coordenadas:-80,-28,-35,5
 
 
 # **** Parâmetros da Barra de Cores ****
@@ -19,7 +19,7 @@ mapa_coordenadas:-75,-35,-35,5
 #           'horizontal' - barra de cores na horizontal
 #           'vertical' - barra de cores na vertical
 #           'none' - para não exibir barra de cores
-barra_cores_orientacao:horizontal
+barra_cores_orientacao:vertical
 
 # Posição da barra de cores em relação ao Mapa
 # Utilizar: 
@@ -27,7 +27,7 @@ barra_cores_orientacao:horizontal
 #           'top'    -  Acima. Válido para 'barra_cores_orientacao=horizontal'.
 #           'left'   -  Esquerda. Válido para 'barra_cores_orientacao=vertical'.
 #           'righ'   -  Direira. Válido para 'barra_cores_orientacao=vertical'.
-barra_cores_posicao:bottom
+barra_cores_posicao:left
 
 # Valores da escala de cores
 # Devem ser fornecidos os intervalos para valores para a barra de cores
@@ -45,6 +45,13 @@ barra_cores_codigos:#FF7171,#FF9898,#FFBFBF,#FFDCDC,#FFFFFF,#DCDCFA,#BFBFF5,#989
 # Para desativar uma ou ambas as setas, usar valor -1
 barra_cores_corMinimo:#FF4B4B 
 barra_cores_corMaximo:#4B4BE6
+
+# Ajustes finais da barra de cores
+# Distância entre a barra e o restante da figura, em percentual do eixo original
+barra_cores_dist:0.12
+
+# Percentual do tamanho do eixo para utilizar na barra de cores
+barra_cores_tam:0.025
 
 # Título da barra de cores.
 # Pode ser deixado em branco.
