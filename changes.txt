@@ -1,13 +1,24 @@
-Log de Inserção de novos arquivos
----------------------------------
+Log de Inserção/alteração de arquivos
+-------------------------------------
 
-Em (05/05/2021):
+Em 06/05/2021:
+    - Arquivos de template atualizados para a versão 0.11, que incluí os parâmetros de tamanho e posição relativa da barra de cores.
+
+Em 05/05/2021:
     - Inserido este arquivo de log;
     - Inserido o arquivo 'templates/AnomaliaWxmaps.dat' com configurações para mapa de anomalias do site WXMaps.
 
 
-Log de Alterações da Rotina 'plotMap'
-------------------------------------
+
+Log de Alterações da Rotina 'plotMap' (arquivo 'plotMap.py')
+------------------------------------------------------------
+
+Versão 0.13 (06/05/2021):
+- Classe 'Mapa', Função 'plotarMapa' e Função 'loadMapTemplate':
+    Adicionados os parâmetros de ajuste de tamanho e posição relativa da barra de cores.
+
+- Função 'plotarMapa': 
+    Limpeza da sintaxe do comando necessário para criar a barra de cores.
 
 Versão 0.12 (05/05/2021):
 
@@ -33,8 +44,10 @@ Versão 0.11 (05/05/2021):
 Log de Alterações do arquivo de exemplos ('exemplos.py'):
 ---------------------------------------------------------
 
-Versão 0.11 (05/05/2021):
+Versão 0.12 (06/05/2021):
+- Alteração no exemplo 2 para utilizar o parâmetro de distância da barra de cores.
 
+Versão 0.11 (05/05/2021):
 - Simplificação na leitura do arquivo binário de exemplo;
 - Inserção do exemplo 4, que utiliza o modelo 'AnomaliaWxmaps.dat';
 - Utilização do objeto 'ArquivoShape' para evitar leituras desnecessárias (e lentas) do arquivo '.shp' dos três primeiros exemplos.
