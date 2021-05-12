@@ -1,0 +1,96 @@
+Instalando o Cartopy no Windows
+-------------------------------
+
+Introdução:
+-----------
+
+A instalação de pacotes Python no Windows pode ser uma dor de cabeça. 
+
+O caso do 'cartopy', não é diferente. Na primeira tentativa de instalar esse pacote no Win 10 + VS Code e com
+uma distribuição Python sem Anaconda, não obtive sucesso. 
+
+Então, pesquisei em diversos fóruns na internet e concluí que existem duas formas interessantes de instalar
+o 'cartopy' (e outros pacotes Pytho também). São elas:
+
+1) Anaconda ou MiniConda ou
+2) PIP + Binários Windows:
+
+Neste texto, vou explicar como proceder para cada um dos métodos de instalação. Adotei o VS Code como ambiente
+de desenvolvimento, então, se você utiliza outros IDEs/Ambientes, talvez existem variações nos procedimentos aqui
+descritos.
+
+
+A) Anaconda ou MiniConda + Microsoft Visual Studio Code (VS Code):
+-----------------------------------------------------------------_
+
+A.1) Instalar o Anaconda ou o MiniConda
+
+Recomendo a instalação do MiniConda, se você já não tiver uma instalação anterior.
+Pesquisas na internet indicam que essa é a forma canônica de instalar pacotes Python no Windows.
+Nos meus testes, essa forma foi efetiva e não resultou em nenhum erro.
+
+O MiniConda pode ser baixado em: https://docs.conda.io/en/latest/miniconda.html#windows-installers. Atente para
+a versão do seu Python e arquiterura do seu Windows (32 ou 64 bits).
+
+Também é possível instalar uma distribuíção Python sem o Anaconda/MiniConda. Mas, neste caso, a instalação de pacotes
+Python no Windows é bem mais complicada. Se você tem já experiência na instalação manual de pacotes Python no Windows,
+fique à vontade para fazê-lo.
+
+A.2) Criar um ambiente virtual no Anaconda/MiniConnda:
+
+Esse passo é opcional, mas é o mais recomendado para evitar que o ambiente 'base' do Anaconda/MiniConda não fique
+demasiadamente poluído com pacotes desnecessários.
+
+Para criar um ambiente virtual, abra um console na pasta onde seu Anaconda/Miniconda está instalado
+e execute o comando abaixo:
+
+conda create -n <nome do ambiente virtual> python=<versão do seu Python>
+
+Substitua <nome do ambiente virtual> e <versão do seu Python> pelos valores desejados, como no exemplo abaixo:
+
+conda create -n 'env-01' python=3.9
+
+A.3) Prepare seu VS Code:
+
+Para preparar seu ambiente do VS code, sugiro consultar o site: https://code.visualstudio.com/docs/languages/python.
+
+Será necessário já ter um ambiente Anaconda/MiniConda configurado (passo A). Além disso, você precisará instalar a 
+extensão Python para o VS Code. Após atender esses requisitos, siga estes passos no VS Code:
+
+A.3.1) Selecionar o interpretador ('base' ou ambiente virtual criado no passo A.2);
+
+A.3.2) Execute os comandos de instalação dos pacotes desejados em um novo terminal 'Python'.
+
+Para instalar o pacote 'cartopy', use o terminal 'Python' para inserir o comando:
+
+conda install --channel conda-forge cartopy.
+
+
+B) Através do PIP + Binários Windows:
+-------------------------------------
+
+Essa forma é mais simples que a primeira, já que utiliza binários não oficiais criados para o Windows. Apesar de não oficiais, 
+estes pacotes são, realmente, utilizados por muitas pessoas. Se o método descrito em A não lhe agradou, tente este.
+
+Particularmente, testei e funcionou muito bem. Neste caso, não instalei um Anaconda/MiniConda e sim uma distribuíção 
+oficial do Python (no meu caso a 3.9). Entendo que este método também funcionará com o Anaconda/MiniConda.
+
+Nesta opção, você também precisará ter a extensão 'Python' instalada no VS Code.
+
+Siga estes passos:
+
+B.1) Acesse o site: https://www.lfd.uci.edu/~gohlke/pythonlibs/#cartopy;
+
+B.2) Baixe a versão que corresponda a seu Python e à arquiterura de seu Windows
+
+No caso do Windows 64 bits + Python 3.9, a versão se chama: 'Cartopy-0.19.0.post1-cp39-cp39-win_amd64.whl';
+
+B.3) Em um terminal Python do VS Code, instale o arquivo 'whl':
+
+Para instalar, use o com o comando: python -m pip install <nome_do_arquivo>
+
+
+Boa programação!
+
+Nelson Rossi Bittencourt
+Versão do arquivo: 0.1 (03/05/2021)
