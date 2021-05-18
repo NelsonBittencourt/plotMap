@@ -9,9 +9,13 @@ Em 05/05/2021:
     - Inserido o arquivo 'templates/AnomaliaWxmaps.dat' com configurações para mapa de anomalias do site WXMaps.
 
 
-
 Log de Alterações da Rotina 'plotMap' (arquivo 'plotMap.py')
 ------------------------------------------------------------
+
+Versão 0.131 (18/05/2021):
+- Adição de múltiplos arquivos shape. Foram necessárias alterações na definição da classe 'ArquivoShape' e na Função
+'plotarMapa'.
+
 
 Versão 0.13 (06/05/2021):
 - Classe 'Mapa', Função 'plotarMapa' e Função 'loadMapTemplate':
@@ -43,6 +47,9 @@ Versão 0.11 (05/05/2021):
 
 Log de Alterações do arquivo de exemplos ('exemplos.py'):
 ---------------------------------------------------------
+
+Versão 0.121 (13/05/2021):
+- Adição de múltiplos arquivos shape. Foram necessárias alterações nos exemplos.
 
 Versão 0.12 (06/05/2021):
 - Alteração no exemplo 2 para utilizar o parâmetro de distância da barra de cores.
