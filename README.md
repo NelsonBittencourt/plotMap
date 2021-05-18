@@ -18,6 +18,11 @@ Matplotlib e Cartopy.
 [Ver licença](LICENSE)
 
 
+## Projeto relacionado:
+
+[mapLoaders](http://www.linkedin.com/in/nelsonrossibittencourt)
+
+
 ## Sobre o autor:
 
 [Meu LinkedIn](http://www.linkedin.com/in/nelsonrossibittencourt)
