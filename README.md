@@ -20,7 +20,7 @@ Matplotlib e Cartopy.
 
 ## Projeto relacionado:
 
-[mapLoaders](http://www.linkedin.com/in/nelsonrossibittencourt)
+[mapLoaders](https://github.com/NelsonBittencourt/mapLoaders)
 
 
 ## Sobre o autor:
