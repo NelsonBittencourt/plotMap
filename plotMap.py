@@ -5,7 +5,7 @@
 plotMap.py - Módulo para auxiliar na plotagem de mapas com dados
 
 Autor   : Nelson Rossi Bittencourt
-Versão  : 0.13
+Versão  : 0.131
 Licença : MIT
 Dependências: matplotlib e cartopy
 ******************************************************************************
@@ -44,8 +44,7 @@ class Mapa:
         self.barraCores_corMinimo = ''
         self.barraCores_corMaximo = ''
         self.barraCores_dist=0
-        self.barraCores_tam=0
-
+        self.barraCores_tam=0        
 
 class ArquivoShape:
     """
@@ -57,36 +56,49 @@ class ArquivoShape:
     pela leitura do arquivo diversas vezes.
 
     """
-    def __init__(self,fileName):        
-        self.shape_feature = ShapelyFeature(Reader(fileName).geometries(), ccrs.PlateCarree(), facecolor='none')           
+    def __init__(self,nomeArquivo, corFace='none', corLinha='gray',espLinha=0.5):        
+        self.shape_feature =    ShapelyFeature(Reader(nomeArquivo).geometries(), ccrs.PlateCarree(),
+                                facecolor=corFace, edgecolor=corLinha, linewidth=espLinha,) 
+                  
 
 
 # Funções
 
 def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
     """
-    plotarMapa - Rotina para plotar um mapa considerando os dados fornecidos
+    Plota um mapa considerando os dados fornecidos.
     
-    Argumentos:
-        titulo_mapa  - Título do mapa;
-        lons         - Lista com as longitutes;
-        lats         - Lista com as latitudes;
-        dados        - Lista com os dados a plotar;        
-        modeloMapa   - string ou 'Mapa'. 
-                       A string deve conter um nome de arquivo de template válido.
-                       Mapa deve conter uma instância do tipo 'Mapa' válida.
-        destino      - (Opcional) Nome do arquivo de saída para a figura. Se não declarado, exibe na tela.
-        shapeFike    - (Opcional) Nome do arquivo tipo 'shp' para leitura do disco ou objeto 'ArquivoShape' lido previamente.
+    Argumentos
+    ----------
+    titulo : Título do mapa;
     
-    Retorno:
-        Nenhum.
+    lons : Lista com as longitutes;
     
+    lats : Lista com as latitudes;
+    
+    dados : Lista com os dados a plotar;        
+    
+    modeloMapa  : string ou objeto tipo 'Mapa'. 
+        A string deve conter um nome de arquivo de template válido.
+        Mapa deve conter uma instância do tipo 'Mapa' válida.
+    
+    destino : (Opcional) Nome do arquivo de saída para a figura. Se não declarado, exibe mapa na tela.
+    
+    shapeFile   : (Opcional) Deve ser fornecido:
+        O nome do arquivo tipo 'shp' para leitura do disco
+
+        ou um objeto tipo 'ArquivoShape' instanciado previamente
+
+        ou uma lista contendo uma combinação de strings e objetos tipo 'ArquivoShape'
+    
+    Retorno
+    -------    
+        Nenhum.    
     """
 
     # Verifica o tipo de argumento passado em 'modeloMapa'.
 
     tipoModelo = type(modeloMapa)
-
     if tipoModelo is str:
         myMap = loadMapTemplate(modeloMapa)
     elif tipoModelo is Mapa:
@@ -106,26 +118,31 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
     # Delimita o mapa.
     ax.set_extent(myMap.mapa_coordenadas,ccrs.PlateCarree())
     
-    # Adiciona as caracteristica do mapa.
+    # Adiciona algumas caracteristica no mapa.
+    # Talvez, no primeiro uso, o 'matplotlib'/'cartopy' execute o download de mapas com as características requeridas.
     ax.add_feature(cartopy.feature.LAND)   
     ax.add_feature(cartopy.feature.COASTLINE)
     ax.add_feature(cartopy.feature.BORDERS)
-
-    # Adiciona uma arquivo tipo 'shape' ao mapa atual    
-
     
-    # Caso o arqgumento 'shapeFile':
-    #                               seja do tipo 'ArquivoShape', atribuí sua 'feature' a variável local;
-    #                               seja uma string, converte-o em 'ArquivoShape' lendo do disco o nome do arquivo fornecido e
-    #                               não seja nenhum dos dois anteriores, não se usa um arquivo de shape.
-    
-    tipoShape = type(shapeFile)
-    if tipoShape is ArquivoShape:        
-        ax.add_feature(shapeFile.shape_feature)
-    elif tipoShape is str:
-        shapeFile = ArquivoShape(shapeFile)
-        ax.add_feature(shapeFile.shape_feature)
-        
+    # Adiciona arquivos tipo 'shape' ao mapa.
+    # Lista que conterá (ou não) strings, 'ArquivosShape' ou uma combinação.
+    newList = []
+
+    # Caso 'shapeFile' não seja uma lista, cria uma lista.
+    if (type(shapeFile)) is not list:
+        newList.append(shapeFile)
+    else:
+        newList = shapeFile
+
+    # Para cada item da lista 'newList', verifica o tipo e adiciona a característica no mapa
+    for item in newList:
+        tipoItem = type(item)
+        if tipoItem is ArquivoShape:
+            ax.add_feature(item.shape_feature)
+        elif tipoItem is str:
+            tmp = ArquivoShape(item)
+            ax.add_feature(tmp.shape_feature)
+           
     # Variáveis auxiliares para ajuste do mapa de cores
     infbound = None
     supbound = None
@@ -188,18 +205,18 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
 
 def loadMapTemplate(arquivoTemplateMapa):
     """
-    loadMapTemplate - Rotina para ler as características de uma mapa a partir de um arquivo de texto formatado.
+    Lê as características de um modelo de mapa a partir de um arquivo de texto formatado.
     
-    Argumentos:
+    Argumentos
+    ----------
 
-        arquivoTemplateMapa - nome do arquivo contendo template do Mapa. 
-                              Este arquivo deve seguir, estritamente, o formato estabelecido.
+    arquivoTemplateMapa : nome do arquivo contendo template do Mapa.
+        Este arquivo deve seguir, estritamente, o formato estabelecido.
 
-    Retorno:
-        objeto Mapa (ver definição da classe 'Mapa' neste arquivo).        
-
-    TODO: implementar as demais características do mapa.
-
+    Retorno
+    -------
+    objeto Mapa (ver definição da classe 'Mapa' neste arquivo).        
+    
     """
     
     # Lista com as linhas lidas do arquivo de template de um mapa.
