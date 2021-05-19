@@ -41,6 +41,8 @@ A.2) Criar um ambiente virtual no Anaconda/MiniConnda:
 Esse passo é opcional, mas é o mais recomendado para evitar que o ambiente 'base' do Anaconda/MiniConda não fique
 demasiadamente poluído com pacotes desnecessários.
 
+IMPORTANTE: ao instalar o Anaconda/Miniconda no Windows é recomendável selecionar também a opção de incluir o caminho no 'PATH'.
+
 Para criar um ambiente virtual, abra um console na pasta onde seu Anaconda/Miniconda está instalado
 e execute o comando abaixo:
 
