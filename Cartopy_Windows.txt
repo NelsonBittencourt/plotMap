@@ -41,7 +41,11 @@ A.2) Criar um ambiente virtual no Anaconda/MiniConnda:
 Esse passo é opcional, mas é o mais recomendado para evitar que o ambiente 'base' do Anaconda/MiniConda não fique
 demasiadamente poluído com pacotes desnecessários.
 
-IMPORTANTE: ao instalar o Anaconda/Miniconda no Windows é recomendável selecionar também a opção de incluir o caminho no 'PATH'.
+IMPORTANTE 1: Apesar de ser a forma mais recomendada, o VS Code, nos meus testes, não foi capaz de ativar o ambiente virtual por si só.
+            Assim, para evitar mais complicações, resolvi instalar os pacotes no ambiente 'Miniconda' base até que consiga uma solução para essa
+            questão da ativação.      
+
+IMPORTANTE 2: Ao instalar o Anaconda/Miniconda no Windows é recomendável selecionar também a opção de incluir o caminho no 'PATH'.
 
 Para criar um ambiente virtual, abra um console na pasta onde seu Anaconda/Miniconda está instalado
 e execute o comando abaixo:
@@ -50,7 +54,7 @@ conda create -n <nome do ambiente virtual> python=<versão do seu Python>
 
 Substitua <nome do ambiente virtual> e <versão do seu Python> pelos valores desejados, como no exemplo abaixo:
 
-conda create -n 'env-01' python=3.9
+conda create -n <nome do ambiente virtual> python=<versão do Python, com a sintaxe x.y>
 
 A.3) Prepare seu VS Code:
 
@@ -64,6 +68,8 @@ A.3.1) Selecionar o interpretador ('base' ou ambiente virtual criado no passo A.
 A.3.2) Execute os comandos de instalação dos pacotes desejados em um novo terminal 'Python'.
 
 Para instalar o pacote 'cartopy', use o terminal 'Python' para inserir o comando:
+
+IMPORTANTE: O canal de instalação que deu melhores resultados foi o 'conda-forge'.
 
 conda install --channel conda-forge cartopy.
 
@@ -95,4 +101,4 @@ Para instalar, use o com o comando: python -m pip install <nome_do_arquivo>
 Boa programação!
 
 Nelson Rossi Bittencourt
-Versão do arquivo: 0.1 (03/05/2021)
+Versão do arquivo: 0.2 (19/05/2021)
