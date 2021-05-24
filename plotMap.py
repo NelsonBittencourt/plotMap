@@ -5,7 +5,7 @@
 plotMap.py - Módulo para auxiliar na plotagem de mapas com dados
 
 Autor   : Nelson Rossi Bittencourt
-Versão  : 0.131
+Versão  : 0.132
 Licença : MIT
 Dependências: matplotlib e cartopy
 ******************************************************************************
@@ -36,6 +36,7 @@ class Mapa:
         #self.mapa_nome = ''
         #self.mapa_tipo = '' 
         self.mapa_coordenadas = []       
+        self.mapa_tipo = ''
         self.barraCores_titulo = ''        
         self.barraCores_orientacao = ''  
         self.barraCores_valores = []  
@@ -166,8 +167,13 @@ def plotarMapa(titulo, lons, lats, dados, modeloMapa, destino='', shapeFile=-1):
     # Cria o índice de cores do mapa
     norm = mpl.colors.BoundaryNorm(myMap.barraCores_valores, cmap.N)
 
-    # Cria o gráfico do tipo contornos preenchidos.   
-    filled = ax.contourf(lons, lats, dados, levels=myMap.barraCores_valores,cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
+    # Cria o gráfico de acordo com o tipo selecionado.
+    if (myMap.mapa_tipo=='contornos'):
+        filled = ax.contourf(lons, lats, dados, levels=myMap.barraCores_valores,cmap=cmap, norm=norm, extend=extend, transform=ccrs.PlateCarree())
+    elif (myMap.mapa_tipo=='xy'):
+        filled = ax.scatter(lons, lats, c=dados, s=50,alpha=1,cmap=cmap, norm=norm,edgecolors='black', transform=ccrs.PlateCarree())
+    else:
+        raise NameError("Tipo de mapa (mapa_tipo) inválido! Verifique o arquivo de template.")
 
     # Ajusta a barra de cores, se houver.    
     if myMap.barraCores_orientacao!="none":       
@@ -223,7 +229,7 @@ def loadMapTemplate(arquivoTemplateMapa):
     lines = []
 
     # Número de linhas válidas esperado.
-    check_valid_lines = 10
+    check_valid_lines = 11
 
     # Contador de linhas válidas.
     valid_lines = 0
@@ -269,6 +275,8 @@ def loadMapTemplate(arquivoTemplateMapa):
     local_map = Mapa()        
     
     try:
+        local_map.mapa_tipo = map_dict['mapa_tipo']
+
         local_map.barraCores_orientacao = map_dict['barra_cores_orientacao']
         local_map.barraCores_titulo = map_dict['barra_cores_titulo'] 
 
