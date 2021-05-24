@@ -1,6 +1,10 @@
 Log de Inserção/alteração de arquivos
 -------------------------------------
 
+Em 13/05/2021:
+	- Arquivos de template atualizados para a versão 0.111, que inclui a chave 'mapa_tipo'.
+	Está nova chave permite que se escolha entre 'contornos' e 'xy' (scatter plot) como tipo de mapa.
+
 Em 06/05/2021:
     - Arquivos de template atualizados para a versão 0.11, que incluí os parâmetros de tamanho e posição relativa da barra de cores.
 
@@ -11,6 +15,9 @@ Em 05/05/2021:
 
 Log de Alterações da Rotina 'plotMap' (arquivo 'plotMap.py')
 ------------------------------------------------------------
+
+Versão 0.132 (23/05/2021):
+-Adição do tipo de mapa 'scatter plot' ou xy. As seguintes funções foram alteradas:	'plotarMapa e loadMapTemplate'
 
 Versão 0.131 (18/05/2021):
 - Adição de múltiplos arquivos shape. Foram necessárias alterações na definição da classe 'ArquivoShape' e na Função
@@ -42,6 +49,7 @@ Versão 0.11 (05/05/2021):
 - Função 'loadMapTemplate':
     Adicionado tratamento de erros na leitura do arquivo;
     Adicionado tratamento de erros na alocação de variáveis no objeto 'Mapa'.
+
 
 
 
