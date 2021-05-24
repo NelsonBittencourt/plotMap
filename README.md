@@ -1,4 +1,4 @@
-# plotMap
+# plotMap versão 0.132
 O projeto 'plotMap' tem por objetivo fornecer uma forma simples de plotar mapas.
 O código é livre (licença MIT) e conto com a colaboração de todos para o seu aperfeiçoamento.
 
