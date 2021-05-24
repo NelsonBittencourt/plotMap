@@ -3,7 +3,7 @@
 
 # Modelo    : Baseado no modelo do site http://wxmaps.org/pix/prec8 para anomalia de precipitação prevista ****
 # Criado por: Nelson Rossi Bittencourt
-# Versão    : 0.11
+# Versão    : 0.111
 
 # TODO: Implementar parâmetros do grid e novos parâmetros do mapa.
 
@@ -11,6 +11,11 @@
 # Define a área visível do Mapa.
 # Devem ser fornecidos, na ordem: longitude Oeste, longitude Leste, latitude Sul e latitude Norte.
 mapa_coordenadas:-80,-28,-35,5
+
+# Define o tipo de gráfico do mapa.
+# Para dados que cobrem grandes áreas, é melhor utilizar o gráfico de contornos -> mapa_tipo:contornos.
+# Para poucos dados por unidade de área, é melhor utilizar o gráfico xy -> mapa_tipo:xy
+mapa_tipo:contornos
 
 
 # **** Parâmetros da Barra de Cores ****
