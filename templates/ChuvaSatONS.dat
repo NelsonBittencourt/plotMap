@@ -15,7 +15,7 @@ mapa_coordenadas:-75,-35,-35,5
 # Define o tipo de gráfico do mapa.
 # Para dados que cobrem grandes áreas, é melhor utilizar o gráfico de contornos -> mapa_tipo:contornos.
 # Para poucos dados por unidade de área, é melhor utilizar o gráfico xy -> mapa_tipo:xy
-mapa_tipo:contornos
+mapa_tipo:xy
 
 
 # **** Parâmetros da Barra de Cores ****
